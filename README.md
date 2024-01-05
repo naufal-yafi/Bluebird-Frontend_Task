@@ -49,7 +49,7 @@ UI Component: [Material UI](https://mui.com/material-ui/)
 [✓] Should display its name  
 
 #### 3. Vehicle list
-[✓] Should display unique random vehicle vehicles and image
+[✓] Should display unique random vehicle vehicles and image  
 [✓] Should display like status (love icon)
    
 #### 4. The menu bar should always hang on top of the page

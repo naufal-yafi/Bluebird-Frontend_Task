@@ -14,6 +14,7 @@ const HomePage = () => {
     category: [],
     type: [],
   });
+  const RANDOM_INDEX: number = utils.randomIndex();
 
   useEffect(() => {
     CarService.getAll((data: ResponseObject) => setCars(data));
@@ -31,15 +32,11 @@ const HomePage = () => {
             <CategoryList categories={cars?.category} />
 
             <ImageList cols={4}>
-              {[0, 1, 2, 3].map((index) => (
+              {[0, 1, 2, 3].map((index: number) => (
                 <Card
                   key={index}
-                  title={
-                    cars?.type[index]?.car_type[utils.randomIndex()]?.vehicle
-                  }
-                  image={
-                    cars?.type[index]?.car_type[utils.randomIndex()]?.imageURL
-                  }
+                  title={cars?.type[index]?.car_type[RANDOM_INDEX]?.vehicle}
+                  image={cars?.type[index]?.car_type[RANDOM_INDEX]?.imageURL}
                 />
               ))}
             </ImageList>

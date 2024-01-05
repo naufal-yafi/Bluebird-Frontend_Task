@@ -22,6 +22,9 @@ const Header = () => {
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
+  const COUNT_WISHLIST = 0;
+  const COUNT_MYBOOK = 0;
+
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
   };
@@ -76,19 +79,15 @@ const Header = () => {
     >
       <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
+          <Badge badgeContent={COUNT_WISHLIST} color="error">
             <ReceiptLongIcon />
           </Badge>
         </IconButton>
         <p>Wishlist</p>
       </MenuItem>
       <MenuItem>
-        <IconButton
-          size="large"
-          aria-label="show 17 new notifications"
-          color="inherit"
-        >
-          <Badge badgeContent={17} color="error">
+        <IconButton size="large" aria-label="show 17 new books" color="inherit">
+          <Badge badgeContent={COUNT_MYBOOK} color="error">
             <BookIcon />
           </Badge>
         </IconButton>
@@ -121,7 +120,7 @@ const Header = () => {
               aria-label="show 4 new mails"
               color="inherit"
             >
-              <Badge badgeContent={4} color="error">
+              <Badge badgeContent={COUNT_WISHLIST} color="error">
                 <ReceiptLongIcon />
               </Badge>
               <Typography sx={{ ml: 1 }}>Wishlist</Typography>
@@ -131,7 +130,7 @@ const Header = () => {
               aria-label="show 17 new notifications"
               color="inherit"
             >
-              <Badge badgeContent={17} color="error">
+              <Badge badgeContent={COUNT_MYBOOK} color="error">
                 <BookIcon />
               </Badge>
               <Typography sx={{ ml: 1 }}>My Book</Typography>
