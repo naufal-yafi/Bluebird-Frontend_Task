@@ -4,6 +4,7 @@ import IconButton from "@mui/material/IconButton";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
 import { useDispatch } from "react-redux";
+import useColorActive from "../../hooks/useColorActive";
 import { addToWishlist } from "../../redux/slices/wishlistSlice";
 
 const CarCard = (props: {
@@ -11,7 +12,9 @@ const CarCard = (props: {
   title: string;
   desc: string[];
   price: string;
+  isMatch: boolean;
 }) => {
+  const { colorActive, handleColor } = useColorActive(props.isMatch);
   const dispatch = useDispatch();
 
   return (
@@ -27,9 +30,11 @@ const CarCard = (props: {
         title={props.title}
         actionIcon={
           <IconButton
-            sx={{ color: "rgba(255, 255, 255, 0.54)" }}
+            sx={{
+              color: `${colorActive ? "red" : "rgba(255, 255, 255, 0.54)"}`,
+            }}
             aria-label={`info about ${props.title}`}
-            onClick={() =>
+            onClick={() => {
               dispatch(
                 addToWishlist({
                   vehicle: props.title,
@@ -37,8 +42,9 @@ const CarCard = (props: {
                   description: props.desc,
                   price: props.price,
                 }),
-              )
-            }
+              );
+              handleColor();
+            }}
           >
             <FavoriteIcon />
           </IconButton>

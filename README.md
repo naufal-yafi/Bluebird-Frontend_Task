@@ -4,9 +4,7 @@
 
 - [Frontend React Task](#frontend-react-task)
 - [Table of Content](#table-of-content)
-  - [Information](#information)
-    - [Developer](#developer)
-    - [Technology Used](#technology-used)
+  - [Technology Used](#technology-used)
   - [Requirements](#requirements)
   - [Preview App](#preview-app)
   - [Preview Test](#preview-test)
@@ -20,13 +18,7 @@
     - [My Book Page](#my-book-page)
     - [Wishlist Page](#wishlist-page)
 
-## Information
-
-### Developer
-
-Muhammad Naufal Yafi'
-
-### Technology Used
+## Technology Used
 
 Technology: [React + Vite + Typescript](https://vitejs.dev/guide/)  
 UI Component: [Material UI](https://mui.com/material-ui/)
@@ -51,11 +43,13 @@ UI Component: [Material UI](https://mui.com/material-ui/)
 [✓] The menu bar should always hang on top of the page
 
 #### 1.1 Category list
+
 [✓] Should be able to slide/wipe  
 [✓] Should display category images from API  
 [✓] Should display its name  
 
 #### 1.2 Vehicle list
+
 [✓] Should display unique random vehicle vehicles and image  
 [✓] Should display like status (love icon)
    
@@ -66,18 +60,18 @@ UI Component: [Material UI](https://mui.com/material-ui/)
 [✕]  When the user types vehicle in the search text box, vehicles detail displayed
 
 ### 3. Vehicle Detail Page
+
 [✓] The share button and like button should be able to use. No need to get/update data from API  
 [✓] The button “share” will copy the URL to the clipboard and the user can paste it later
 [✓] The button “Like” will add the vehicle to the list of wishlist vehicles. Allowed to store in state management  
 [✓] The button “Book” will add the vehicle to the list of purchased history. Allowed to store in state management
 
 #### 3.1. This page will display if the user clicks on
+
 [✓] One of the vehicles listed on the home page  
 [✓] One of the vehicles on the search result page  
 [✓] One of the vehicles listed on the MyBook history page  
 [✓] One of the vehicles listed on the wishlist page  
-
-
 
 ### My Book Page
 
@@ -87,6 +81,7 @@ UI Component: [Material UI](https://mui.com/material-ui/)
 [✓] The back button will bring you back to the previous page  
 
 ### Wishlist Page
+
 [✓] This page will display if the user clicks on the Wishlist menu at the bottom navigation on
 the Home page  
 [✓] The list of wishlist vehicles will grow if use click “Like” on the love icon or vehicle detail 

@@ -175,6 +175,8 @@ const HomePage = () => {
                       )[0]
                     }
                     path={location.href}
+                    isMatchBook={utils.isMatchObj(BOOK, TITLE)}
+                    isMathWishList={utils.isMatchObj(WISHLIST, TITLE)}
                   />
                 )}
 
@@ -197,7 +199,7 @@ const HomePage = () => {
                 )}
 
                 {TAB === null && TITLE === null && (
-                  <CarList cars={cars?.type} />
+                  <CarList cars={cars?.type} match={WISHLIST} />
                 )}
               </>
             )}

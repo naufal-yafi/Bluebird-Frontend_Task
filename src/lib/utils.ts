@@ -43,6 +43,11 @@ const utils = {
       car.vehicle.toLowerCase().includes(targetTitle.toLowerCase()),
     );
   },
+  isMatchObj: (obj: CarType[], targetTitle: string): boolean => {
+    const find = obj.filter((car: CarType) => car.vehicle === targetTitle);
+
+    return find.length > 0;
+  },
 };
 
 export default utils;

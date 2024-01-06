@@ -14,15 +14,27 @@ import {
 } from "@mui/material";
 import { Fragment } from "react";
 import { useDispatch } from "react-redux";
+import useColorActive from "../../hooks/useColorActive";
 import useCopyToClipboard from "../../hooks/useCopyToClipboard";
 import { addToBook } from "../../redux/slices/bookSlice";
 import { addToWishlist } from "../../redux/slices/wishlistSlice";
 import CarType from "../../types/carType.type";
 
-const CarDetailCard = (props: { car: CarType; path: string | null }) => {
+const CarDetailCard = (props: {
+  car: CarType;
+  path: string | null;
+  isMatchBook: boolean;
+  isMathWishList: boolean;
+}) => {
   const { showPopup, handleCopyToClipboard, error, handleShowPopup } =
     useCopyToClipboard();
   const dispatch = useDispatch();
+  const { colorActive: activeBook, handleColor: handleActiveBook } =
+    useColorActive(props.isMatchBook);
+  const { colorActive: activeWishlist, handleColor: handleActiveWishlist } =
+    useColorActive(props.isMathWishList);
+  const { colorActive: activeShare, handleColor: handleActiveShare } =
+    useColorActive(false);
 
   return (
     <Fragment>
@@ -100,18 +112,27 @@ const CarDetailCard = (props: { car: CarType; path: string | null }) => {
 
             <Box sx={{ mt: 2 }}>
               <IconButton
-                sx={{ color: "rgba(255, 255, 255, 0.54)" }}
+                sx={{
+                  color: `${
+                    activeShare ? "green" : "rgba(255, 255, 255, 0.54)"
+                  }`,
+                }}
                 onClick={() => {
                   handleCopyToClipboard(props.path);
                   handleShowPopup(true);
+                  handleActiveShare();
                 }}
               >
                 <ShareIcon />
               </IconButton>
 
               <IconButton
-                sx={{ color: "rgba(255, 255, 255, 0.54)" }}
-                onClick={() =>
+                sx={{
+                  color: `${
+                    activeWishlist ? "red" : "rgba(255, 255, 255, 0.54)"
+                  }`,
+                }}
+                onClick={() => {
                   dispatch(
                     addToWishlist({
                       vehicle: props.car?.vehicle,
@@ -119,15 +140,20 @@ const CarDetailCard = (props: { car: CarType; path: string | null }) => {
                       description: props.car?.description,
                       price: props.car?.price,
                     }),
-                  )
-                }
+                  );
+                  handleActiveWishlist();
+                }}
               >
                 <FavoriteIcon />
               </IconButton>
 
               <IconButton
-                sx={{ color: "rgba(255, 255, 255, 0.54)" }}
-                onClick={() =>
+                sx={{
+                  color: `${
+                    activeBook ? "white" : "rgba(255, 255, 255, 0.54)"
+                  }`,
+                }}
+                onClick={() => {
                   dispatch(
                     addToBook({
                       vehicle: props.car?.vehicle,
@@ -135,8 +161,9 @@ const CarDetailCard = (props: { car: CarType; path: string | null }) => {
                       description: props.car?.description,
                       price: props.car?.price,
                     }),
-                  )
-                }
+                  );
+                  handleActiveBook();
+                }}
               >
                 <BookIcon />
               </IconButton>
