@@ -1,5 +1,5 @@
 import { Container, Typography } from "@mui/material";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import CarList from "../components/CarList";
 import CategoryList from "../components/CategoryList";
 import Header from "../components/Header";
@@ -12,10 +12,16 @@ const HomePage = () => {
     category: [],
     type: [],
   });
+  const errorMessage = useRef<string | undefined>();
 
   useEffect(() => {
-    CarService.getAll((data: ResponseObject) => setCars(data));
-    setLoading(false);
+    try {
+      CarService.getAll((data: ResponseObject) => setCars(data));
+    } catch (error) {
+      errorMessage.current = (error as Error).message;
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
   return (
@@ -26,8 +32,14 @@ const HomePage = () => {
           <Typography align="center">Loading...</Typography>
         ) : (
           <>
-            <CategoryList categories={cars?.category} />
-            <CarList cars={cars?.type} />
+            {errorMessage.current !== undefined ? (
+              <Typography color="red">{errorMessage.current}</Typography>
+            ) : (
+              <>
+                <CategoryList categories={cars?.category} />
+                <CarList cars={cars?.type} />
+              </>
+            )}
           </>
         )}
       </Container>

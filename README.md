@@ -14,6 +14,15 @@
       - [2. Category list](#2-category-list)
       - [3. Vehicle list](#3-vehicle-list)
       - [4. The menu bar should always hang on top of the page](#4-the-menu-bar-should-always-hang-on-top-of-the-page)
+    - [Search Page](#search-page)
+      - [1. In the beginning, the page displays a search text box](#1-in-the-beginning-the-page-displays-a-search-text-box)
+      - [2. When the user types vehicle in the search text box, vehicles detail displayed](#2-when-the-user-types-vehicle-in-the-search-text-box-vehicles-detail-displayed)
+    - [Vehicle Detail Page](#vehicle-detail-page)
+      - [1. This page will display if the user clicks on](#1-this-page-will-display-if-the-user-clicks-on)
+      - [2. The share button and like button should be able to use. No need to get/update data from API](#2-the-share-button-and-like-button-should-be-able-to-use-no-need-to-getupdate-data-from-api)
+      - [3. The button “share” will copy the URL to the clipboard and the user can paste it later](#3-the-button-share-will-copy-the-url-to-the-clipboard-and-the-user-can-paste-it-later)
+      - [4. The button “Like” will add the vehicle to the list of wishlist vehicles. Allowed to store in state management](#4-the-button-like-will-add-the-vehicle-to-the-list-of-wishlist-vehicles-allowed-to-store-in-state-management)
+      - [5. The button “Book” will add the vehicle to the list of purchased history. Allowed to store in state management](#5-the-button-book-will-add-the-vehicle-to-the-list-of-purchased-history-allowed-to-store-in-state-management)
   - [Preview App](#preview-app)
   - [Preview Test](#preview-test)
 
@@ -30,11 +39,11 @@ UI Component: [Material UI](https://mui.com/material-ui/)
 
 ## Requirements
 
-1. Redux
-2. React Hook (useState, useEffect, useRef)
-3. Unit Test Jest + Enzyme (coverage 50%)
-4. Hybrid App SSR and CSR _(optional)_
-5. AMP Pages _(optional)_
+[✕]  Redux  
+[✓]  React Hook (useState, useEffect, useRef)  
+[✕]  Unit Test Jest + Enzyme (coverage 50%)  
+[✕]  Hybrid App SSR and CSR _(optional)_  
+[✕]  AMP Pages _(optional)_  
 
 ## Task
 
@@ -54,6 +63,34 @@ UI Component: [Material UI](https://mui.com/material-ui/)
    
 #### 4. The menu bar should always hang on top of the page
 [✓] App bar position fixed
+
+### Search Page
+
+#### 1. In the beginning, the page displays a search text box
+[✓] Display search box
+
+#### 2. When the user types vehicle in the search text box, vehicles detail displayed
+[✕] Realtime search get api
+
+### Vehicle Detail Page
+
+#### 1. This page will display if the user clicks on
+[✓] One of the vehicles listed on the home page  
+[✓] One of the vehicles on the search result page  
+[✓] One of the vehicles listed on the MyBook history page  
+[✓] One of the vehicles listed on the wishlist page  
+
+#### 2. The share button and like button should be able to use. No need to get/update data from API
+[✓] Share link should be able to use and not get/update data from API
+
+#### 3. The button “share” will copy the URL to the clipboard and the user can paste it later
+[✕] Copy URL to Clipboard
+
+#### 4. The button “Like” will add the vehicle to the list of wishlist vehicles. Allowed to store in state management
+
+#### 5. The button “Book” will add the vehicle to the list of purchased history. Allowed to store in state management
+
+
 
 ## Preview App
 
