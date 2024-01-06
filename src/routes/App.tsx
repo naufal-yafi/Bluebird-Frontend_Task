@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import BottomNav from "../components/BottomNav";
 import Footer from "../components/Footer";
 import HomePage from "../pages/HomePage";
 
@@ -12,6 +13,7 @@ const App = () => {
         </Routes>
       </Router>
       <Footer />
+      <BottomNav />
     </Fragment>
   );
 };

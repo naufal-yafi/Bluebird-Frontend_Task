@@ -117,10 +117,10 @@ const CarDetailCard = (props: {
                     activeShare ? "green" : "rgba(255, 255, 255, 0.54)"
                   }`,
                 }}
-                onClick={() => {
+                onClick={(e) => {
                   handleCopyToClipboard(props.path);
                   handleShowPopup(true);
-                  handleActiveShare();
+                  handleActiveShare(e);
                 }}
               >
                 <ShareIcon />
@@ -132,7 +132,7 @@ const CarDetailCard = (props: {
                     activeWishlist ? "red" : "rgba(255, 255, 255, 0.54)"
                   }`,
                 }}
-                onClick={() => {
+                onClick={(e) => {
                   dispatch(
                     addToWishlist({
                       vehicle: props.car?.vehicle,
@@ -141,7 +141,7 @@ const CarDetailCard = (props: {
                       price: props.car?.price,
                     }),
                   );
-                  handleActiveWishlist();
+                  handleActiveWishlist(e);
                 }}
               >
                 <FavoriteIcon />
@@ -153,7 +153,7 @@ const CarDetailCard = (props: {
                     activeBook ? "white" : "rgba(255, 255, 255, 0.54)"
                   }`,
                 }}
-                onClick={() => {
+                onClick={(e) => {
                   dispatch(
                     addToBook({
                       vehicle: props.car?.vehicle,
@@ -162,7 +162,7 @@ const CarDetailCard = (props: {
                       price: props.car?.price,
                     }),
                   );
-                  handleActiveBook();
+                  handleActiveBook(e);
                 }}
               >
                 <BookIcon />

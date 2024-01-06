@@ -34,7 +34,7 @@ const CarCard = (props: {
               color: `${colorActive ? "red" : "rgba(255, 255, 255, 0.54)"}`,
             }}
             aria-label={`info about ${props.title}`}
-            onClick={() => {
+            onClick={(e) => {
               dispatch(
                 addToWishlist({
                   vehicle: props.title,
@@ -43,7 +43,7 @@ const CarCard = (props: {
                   price: props.price,
                 }),
               );
-              handleColor();
+              handleColor(e);
             }}
           >
             <FavoriteIcon />
