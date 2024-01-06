@@ -1,7 +1,6 @@
 import SearchIcon from "@mui/icons-material/Search";
 import { alpha, styled } from "@mui/material";
-import InputBase from "@mui/material/InputBase";
-import useInput from "../hooks/useInput";
+import { ReactNode } from "react";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -29,31 +28,13 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
   justifyContent: "center",
 }));
 
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
-  "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 1, 1, 0),
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: "20ch",
-    },
-  },
-}));
-
-const SearchBar = (props: { value: string | null }) => {
-  const { inputValue } = useInput(props.value);
+const SearchBar = (props: { children: ReactNode }) => {
   return (
     <Search>
       <SearchIconWrapper>
         <SearchIcon />
       </SearchIconWrapper>
-      <StyledInputBase
-        value={inputValue}
-        placeholder="Search…"
-        inputProps={{ "aria-label": "search" }}
-      />
+      {props.children}
     </Search>
   );
 };

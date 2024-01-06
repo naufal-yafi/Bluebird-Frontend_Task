@@ -10,12 +10,13 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Toolbar from "@mui/material/Toolbar";
+import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import useHeader from "../hooks/useHeader";
 import SearchBar from "./SearchBar";
 
 const Header = (props: {
-  default_value: string | null;
+  children: ReactNode;
   wishlist_count: number;
   book_count: number;
 }) => {
@@ -127,7 +128,7 @@ const Header = (props: {
           </Link>
 
           <Box sx={{ flexGrow: 1 }} />
-          <SearchBar value={props.default_value} />
+          <SearchBar>{props.children}</SearchBar>
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <IconButton
               size="large"

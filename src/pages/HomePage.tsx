@@ -12,15 +12,19 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
+
 import { Fragment, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import BookCard from "../components/Card/BookCard";
 import CarDetailCard from "../components/Card/CarDetailCard";
+import CarSearchCard from "../components/Card/CarSearchCard";
 import Header from "../components/Header";
 import CarList from "../components/List/CarList";
 import CategoryList from "../components/List/CategoryList";
+import StyledInputBase from "../components/styledInputBase.style";
 import useFetchApi from "../hooks/useFetchApi";
+import useInput from "../hooks/useInput";
 import utils from "../lib/utils";
 import { BookRootState } from "../redux/root/bookRoot";
 import { WishlistRootState } from "../redux/root/wishlistRoot";
@@ -28,8 +32,10 @@ import CarType from "../types/carType.type";
 
 const HomePage = () => {
   const { loading, cars, errorMessage } = useFetchApi();
+  const { inputValue, handleInput } = useInput();
   const [requestQuery] = useSearchParams();
   const [countPrice, setCountPrice] = useState<number>(0);
+  const [searchCar, setSearchCar] = useState<CarType[]>();
 
   const WISHLIST = useSelector(
     (state: WishlistRootState) => state.wishlist.data,
@@ -38,6 +44,12 @@ const HomePage = () => {
 
   const TAB = requestQuery.get("tab");
   const TITLE = requestQuery.get("title");
+
+  useEffect(() => {
+    if (inputValue !== null) {
+      setSearchCar(utils.searchCar(utils.flattenCarTypes(cars), inputValue));
+    }
+  }, [cars, inputValue]);
 
   useEffect(() => {
     localStorage.setItem("wishlist", JSON.stringify(WISHLIST));
@@ -52,11 +64,24 @@ const HomePage = () => {
 
   return (
     <Fragment>
-      <Header
-        default_value={null}
-        wishlist_count={WISHLIST.length}
-        book_count={BOOK.length}
-      />
+      <Header wishlist_count={WISHLIST.length} book_count={BOOK.length}>
+        {TITLE ? (
+          <Link href="/">
+            <StyledInputBase
+              value={TITLE}
+              placeholder="Search…"
+              inputProps={{ "aria-label": "search" }}
+            />
+          </Link>
+        ) : (
+          <StyledInputBase
+            onChange={handleInput}
+            value={inputValue}
+            placeholder="Search…"
+            inputProps={{ "aria-label": "search" }}
+          />
+        )}
+      </Header>
       <Container sx={{ pt: 12 }}>
         {loading ? (
           <Typography align="center">Loading...</Typography>
@@ -67,10 +92,6 @@ const HomePage = () => {
             ) : (
               <>
                 <CategoryList categories={cars?.category} />
-
-                {TAB === null && TITLE === null && (
-                  <CarList cars={cars?.type} />
-                )}
 
                 {TAB === "wishlist" && (
                   <>
@@ -95,7 +116,11 @@ const HomePage = () => {
                         <TableBody>
                           {WISHLIST.map((car: CarType) => (
                             <TableRow key={car.vehicle}>
-                              <TableCell><Link href={`/?title=${car.vehicle}`}>{car.vehicle}</Link></TableCell>
+                              <TableCell>
+                                <Link href={`/?title=${car.vehicle}`}>
+                                  {car.vehicle}
+                                </Link>
+                              </TableCell>
                               <TableCell>{car.price}</TableCell>
                             </TableRow>
                           ))}
@@ -151,6 +176,28 @@ const HomePage = () => {
                     }
                     path={location.href}
                   />
+                )}
+
+                {searchCar?.length === 1 ? (
+                  <CarSearchCard
+                    title={searchCar[0]?.vehicle}
+                    description={searchCar[0]?.description}
+                    image={searchCar[0].imageURL}
+                  />
+                ) : (
+                  <>
+                    {inputValue === null || inputValue === "" ? (
+                      <></>
+                    ) : (
+                      <Typography align="center" sx={{ mt: 2 }}>
+                        The car you are looking for was not found !
+                      </Typography>
+                    )}
+                  </>
+                )}
+
+                {TAB === null && TITLE === null && (
+                  <CarList cars={cars?.type} />
                 )}
               </>
             )}

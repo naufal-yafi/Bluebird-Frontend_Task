@@ -1,10 +1,18 @@
 import { useState } from "react";
 
-const useInput = (default_value: string | null) => {
-  const [inputValue, setInputValue] = useState<string | null>(default_value);
+const useInput = (): {
+  inputValue: string | null;
+  handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+} => {
+  const [inputValue, setInputValue] = useState<string | null>(null);
+
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  };
 
   return {
     inputValue,
+    handleInput,
   };
 };
 

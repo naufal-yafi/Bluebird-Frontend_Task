@@ -38,6 +38,11 @@ const utils = {
       currency: "IDR",
     }).format(number);
   },
+  searchCar: (obj: CarType[], targetTitle: string): CarType[] => {
+    return obj.filter((car: CarType) =>
+      car.vehicle.toLowerCase().includes(targetTitle.toLowerCase()),
+    );
+  },
 };
 
 export default utils;
