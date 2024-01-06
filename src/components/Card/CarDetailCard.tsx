@@ -13,8 +13,8 @@ import {
   Typography,
 } from "@mui/material";
 import { Fragment } from "react";
-import useCopyToClipboard from "../hooks/useCopyToClipboard";
-import CarType from "../types/carType.type";
+import useCopyToClipboard from "../../hooks/useCopyToClipboard";
+import CarType from "../../types/carType.type";
 
 const CarDetailCard = (props: { car: CarType; path: string | null }) => {
   const { showPopup, handleCopyToClipboard, error, handleShowPopup } =

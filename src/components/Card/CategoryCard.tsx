@@ -1,5 +1,5 @@
 import { Paper } from "@mui/material";
-import utils from "../lib/utils";
+import utils from "../../lib/utils";
 
 const CategoryCard = (props: Readonly<{ name: string; image: string }>) => {
   return (

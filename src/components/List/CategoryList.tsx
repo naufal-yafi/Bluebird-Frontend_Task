@@ -1,6 +1,6 @@
 import Carousel from "react-material-ui-carousel";
-import Category from "../types/category.type";
-import CategoryCard from "./CategoryCard";
+import Category from "../../types/category.type";
+import CategoryCard from "../Card/CategoryCard";
 
 const CategoryList = (props: { categories: Category[] }) => {
   return (

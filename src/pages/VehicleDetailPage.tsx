@@ -1,10 +1,10 @@
 import { Container, Typography } from "@mui/material";
 import { Fragment } from "react";
 import { useSearchParams } from "react-router-dom";
-import CarDetailCard from "../components/CarDetailCard";
-import CarList from "../components/CarList";
-import CategoryList from "../components/CategoryList";
+import CarDetailCard from "../components/Card/CarDetailCard";
 import Header from "../components/Header";
+import CarList from "../components/List/CarList";
+import CategoryList from "../components/List/CategoryList";
 import useFetchApi from "../hooks/useFetchApi";
 import utils from "../lib/utils";
 

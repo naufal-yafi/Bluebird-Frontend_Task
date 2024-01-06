@@ -1,7 +1,7 @@
 import { ImageList } from "@mui/material";
-import utils from "../lib/utils";
-import Type from "../types/type.type";
-import CarCard from "./CarCard";
+import utils from "../../lib/utils";
+import Type from "../../types/type.type";
+import CarCard from "../Card/CarCard";
 
 const CarList = (props: { cars: Type[] }) => {
   const RANDOM_INDEX: number = utils.randomIndex();

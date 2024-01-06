@@ -1,8 +1,8 @@
 import { Container, Typography } from "@mui/material";
 import { Fragment } from "react";
-import CarList from "../components/CarList";
-import CategoryList from "../components/CategoryList";
 import Header from "../components/Header";
+import CarList from "../components/List/CarList";
+import CategoryList from "../components/List/CategoryList";
 import useFetchApi from "../hooks/useFetchApi";
 
 const HomePage = () => {
