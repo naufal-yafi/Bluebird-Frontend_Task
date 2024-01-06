@@ -5,8 +5,13 @@ interface WishlistState {
   data: CarType[];
 }
 
+const localStorageData = localStorage.getItem("wishlist");
+const initialData: CarType[] = localStorageData
+  ? JSON.parse(localStorageData)
+  : [];
+
 const initialState: WishlistState = {
-  data: [],
+  data: initialData,
 };
 
 const wishlistSlice = createSlice({
@@ -19,7 +24,9 @@ const wishlistSlice = createSlice({
         (item: CarType) => item.vehicle === action.payload.vehicle,
       );
 
-      if (!isDuplicate) state.data.push(action.payload);
+      if (!isDuplicate) {
+        state.data.push(action.payload);
+      }
     },
   },
 });

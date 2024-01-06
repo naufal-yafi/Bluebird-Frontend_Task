@@ -10,14 +10,14 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Toolbar from "@mui/material/Toolbar";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import useHeader from "../hooks/useHeader";
 import SearchBar from "./SearchBar";
 
-const Header = (props: { default_value: string | null }) => {
-  const WISHLIST = useSelector((state) => state.wishlist.data);
-
+const Header = (props: {
+  default_value: string | null;
+  wishlist_count: number;
+}) => {
   const {
     anchorEl,
     mobileMoreAnchorEl,
@@ -31,13 +31,13 @@ const Header = (props: { default_value: string | null }) => {
   const SETTINGS_MENU = {
     wishlist: {
       label: "My Wishlist",
-      count: WISHLIST.length,
-      link: "/wishlist",
+      count: props.wishlist_count,
+      link: "/?tab=wishlist",
     },
     book: {
       label: "My Book",
       count: 0,
-      link: "/book",
+      link: "/?tab=book",
     },
   };
 

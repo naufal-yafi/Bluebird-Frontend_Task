@@ -18,7 +18,7 @@ const VehicleDetailPage = () => {
 
   return (
     <Fragment>
-      <Header default_value={TITLE} />
+      <Header default_value={TITLE} wishlist_count={0} />
       <Container sx={{ pt: 12 }}>
         {loading ? (
           <Typography align="center">Loading...</Typography>
