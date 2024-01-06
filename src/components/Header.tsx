@@ -10,35 +10,30 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Toolbar from "@mui/material/Toolbar";
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import useHeader from "../hooks/useHeader";
 import SearchBar from "./SearchBar";
 
-const Header = () => {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
-    useState<null | HTMLElement>(null);
+const Header = (props: { default_value: string | null }) => {
+  const {
+    anchorEl,
+    mobileMoreAnchorEl,
+    isMenuOpen,
+    isMobileMenuOpen,
+    handleMenuClose,
+    handleMobileMenuClose,
+    handleMobileMenuOpen,
+  } = useHeader();
 
-  const isMenuOpen: boolean = Boolean(anchorEl);
-  const isMobileMenuOpen: boolean = Boolean(mobileMoreAnchorEl);
-
-  const COUNT_WISHLIST: number = 0;
-  const COUNT_BOOK: number = 0;
-
-  const LABEL_WISHLIST: string = "My Wishlist";
-  const LABEL_BOOK: string = "My Book";
-
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
-  };
-
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-    handleMobileMenuClose();
-  };
-
-  const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setMobileMoreAnchorEl(event.currentTarget);
+  const SETTINGS_MENU = {
+    wishlist: {
+      label: "My Wishlist",
+      count: 0,
+    },
+    book: {
+      label: "My Book",
+      count: 0,
+    },
   };
 
   const menuId = "primary-search-account-menu";
@@ -82,19 +77,19 @@ const Header = () => {
     >
       <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={COUNT_WISHLIST} color="error">
+          <Badge badgeContent={SETTINGS_MENU.wishlist.count} color="error">
             <FavoriteIcon />
           </Badge>
         </IconButton>
-        <p>{LABEL_WISHLIST}</p>
+        <p>{SETTINGS_MENU.wishlist.label}</p>
       </MenuItem>
       <MenuItem>
         <IconButton size="large" aria-label="show 17 new books" color="inherit">
-          <Badge badgeContent={COUNT_BOOK} color="error">
+          <Badge badgeContent={SETTINGS_MENU.book.count} color="error">
             <BookIcon />
           </Badge>
         </IconButton>
-        <p>{LABEL_BOOK}</p>
+        <p>{SETTINGS_MENU.book.label}</p>
       </MenuItem>
     </Menu>
   );
@@ -116,27 +111,29 @@ const Header = () => {
           </Link>
 
           <Box sx={{ flexGrow: 1 }} />
-          <SearchBar />
+          <SearchBar value={props.default_value} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <IconButton
               size="large"
               aria-label="show 4 new mails"
               color="inherit"
             >
-              <Badge badgeContent={COUNT_WISHLIST} color="error">
+              <Badge badgeContent={SETTINGS_MENU.wishlist.count} color="error">
                 <FavoriteIcon />
               </Badge>
-              <Typography sx={{ ml: 1 }}>{LABEL_WISHLIST}</Typography>
+              <Typography sx={{ ml: 1 }}>
+                {SETTINGS_MENU.wishlist.label}
+              </Typography>
             </IconButton>
             <IconButton
               size="large"
               aria-label="show 17 new notifications"
               color="inherit"
             >
-              <Badge badgeContent={COUNT_BOOK} color="error">
+              <Badge badgeContent={SETTINGS_MENU.book.count} color="error">
                 <BookIcon />
               </Badge>
-              <Typography sx={{ ml: 1 }}>{LABEL_BOOK}</Typography>
+              <Typography sx={{ ml: 1 }}>{SETTINGS_MENU.book.label}</Typography>
             </IconButton>
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" } }}>

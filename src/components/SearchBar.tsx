@@ -1,6 +1,7 @@
 import SearchIcon from "@mui/icons-material/Search";
 import { alpha, styled } from "@mui/material";
 import InputBase from "@mui/material/InputBase";
+import useInput from "../hooks/useInput";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -41,13 +42,15 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-const SearchBar = () => {
+const SearchBar = (props: { value: string | null }) => {
+  const { inputValue } = useInput(props.value);
   return (
     <Search>
       <SearchIconWrapper>
         <SearchIcon />
       </SearchIconWrapper>
       <StyledInputBase
+        value={inputValue}
         placeholder="Search…"
         inputProps={{ "aria-label": "search" }}
       />

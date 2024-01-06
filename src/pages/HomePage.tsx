@@ -20,7 +20,7 @@ const HomePage = () => {
 
   return (
     <Fragment>
-      <Header />
+      <Header default_value={null} />
       <Container sx={{ pt: 12 }}>
         {loading ? (
           <Typography align="center">Loading...</Typography>
