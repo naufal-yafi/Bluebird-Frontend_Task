@@ -1,30 +1,20 @@
 import { Container, Typography } from "@mui/material";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment } from "react";
 import { useSearchParams } from "react-router-dom";
 import CarDetailCard from "../components/CarDetailCard";
 import CarList from "../components/CarList";
 import CategoryList from "../components/CategoryList";
 import Header from "../components/Header";
+import useFetchApi from "../hooks/useFetchApi";
 import utils from "../lib/utils";
-import CarService from "../services/car.service";
-import ResponseObject from "../types/responseObject.type";
 
 const VehicleDetailPage = () => {
-  const [loading, setLoading] = useState<boolean>(true);
+  const { loading, cars, errorMessage } = useFetchApi();
   const [requestQuery] = useSearchParams();
-  const [cars, setCars] = useState<ResponseObject>({
-    category: [],
-    type: [],
-  });
 
   const fullURL = window.location.origin + location.pathname + location.search;
 
   const TITLE: string | null = requestQuery.get("title");
-
-  useEffect(() => {
-    CarService.getAll((data: ResponseObject) => setCars(data));
-    setLoading(false);
-  }, []);
 
   return (
     <Fragment>
@@ -34,17 +24,26 @@ const VehicleDetailPage = () => {
           <Typography align="center">Loading...</Typography>
         ) : (
           <>
-            <CategoryList categories={cars?.category} />
-
-            {TITLE === null || TITLE === "" ? (
-              <CarList cars={cars?.type} />
+            {errorMessage !== undefined ? (
+              <Typography color="red">{errorMessage}</Typography>
             ) : (
-              <CarDetailCard
-                car={
-                  utils.findCarByTitle(utils.flattenCarTypes(cars), TITLE)[0]
-                }
-                path={fullURL}
-              />
+              <>
+                <CategoryList categories={cars?.category} />
+
+                {TITLE === null || TITLE === "" ? (
+                  <CarList cars={cars?.type} />
+                ) : (
+                  <CarDetailCard
+                    car={
+                      utils.findCarByTitle(
+                        utils.flattenCarTypes(cars),
+                        TITLE,
+                      )[0]
+                    }
+                    path={fullURL}
+                  />
+                )}
+              </>
             )}
           </>
         )}
