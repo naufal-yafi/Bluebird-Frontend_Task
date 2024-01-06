@@ -7,11 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 
-const BookWishlistCard = (props: {
-  title: string;
-  image: string;
-  price: string;
-}) => {
+const BookCard = (props: { title: string; image: string; price: string }) => {
   return (
     <Box
       sx={{
@@ -23,21 +19,23 @@ const BookWishlistCard = (props: {
       }}
     >
       <Card sx={{ width: "50%" }}>
-        <Link href={`/vehicle?title=${props.title}`}>
+        <Link href={`/?title=${props.title}`}>
           <CardMedia component="img" image={props.image} alt="Paella dish" />
         </Link>
       </Card>
       <Card sx={{ width: "50%" }}>
         <CardContent>
-          <Typography
-            variant="h4"
-            component="h1"
-            color=""
-            fontWeight={800}
-            sx={{ mb: 2 }}
-          >
-            {props.title}
-          </Typography>
+          <Link href={`/?title=${props.title}`}>
+            <Typography
+              variant="h4"
+              component="h1"
+              color=""
+              fontWeight={800}
+              sx={{ mb: 2 }}
+            >
+              {props.title}
+            </Typography>
+          </Link>
           <Typography
             variant="caption"
             component="p"
@@ -54,4 +52,4 @@ const BookWishlistCard = (props: {
   );
 };
 
-export default BookWishlistCard;
+export default BookCard;

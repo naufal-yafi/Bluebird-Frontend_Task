@@ -8,6 +8,8 @@
     - [Developer](#developer)
     - [Technology Used](#technology-used)
   - [Requirements](#requirements)
+  - [Preview App](#preview-app)
+  - [Preview Test](#preview-test)
   - [Task](#task)
     - [Home Page](#home-page)
       - [1. The page should get data from the API below to populate 2 sections](#1-the-page-should-get-data-from-the-api-below-to-populate-2-sections)
@@ -23,8 +25,11 @@
       - [3. The button “share” will copy the URL to the clipboard and the user can paste it later](#3-the-button-share-will-copy-the-url-to-the-clipboard-and-the-user-can-paste-it-later)
       - [4. The button “Like” will add the vehicle to the list of wishlist vehicles. Allowed to store in state management](#4-the-button-like-will-add-the-vehicle-to-the-list-of-wishlist-vehicles-allowed-to-store-in-state-management)
       - [5. The button “Book” will add the vehicle to the list of purchased history. Allowed to store in state management](#5-the-button-book-will-add-the-vehicle-to-the-list-of-purchased-history-allowed-to-store-in-state-management)
-  - [Preview App](#preview-app)
-  - [Preview Test](#preview-test)
+    - [My Book Page](#my-book-page)
+      - [1. This page will display if the user clicks on the MyBook menu at the above navigation on the Home page](#1-this-page-will-display-if-the-user-clicks-on-the-mybook-menu-at-the-above-navigation-on-the-home-page)
+      - [2. The list of booked vehicles will grow if the use clicks “Book” on the vehicle detail page](#2-the-list-of-booked-vehicles-will-grow-if-the-use-clicks-book-on-the-vehicle-detail-page)
+      - [3. If the user clicks on one of the vehicles on the list it will bring to the detail vehicle page](#3-if-the-user-clicks-on-one-of-the-vehicles-on-the-list-it-will-bring-to-the-detail-vehicle-page)
+      - [4. The back button will bring you back to the previous page](#4-the-back-button-will-bring-you-back-to-the-previous-page)
 
 ## Information
 
@@ -44,6 +49,10 @@ UI Component: [Material UI](https://mui.com/material-ui/)
 [✕]  Unit Test Jest + Enzyme (coverage 50%)  
 [✕]  Hybrid App SSR and CSR _(big plus)_  
 [✕]  AMP Pages _(big plus)_  
+
+## Preview App
+
+## Preview Test
 
 ## Task
 
@@ -77,8 +86,8 @@ UI Component: [Material UI](https://mui.com/material-ui/)
 #### 1. This page will display if the user clicks on
 [✓] One of the vehicles listed on the home page  
 [✓] One of the vehicles on the search result page  
-[✕] One of the vehicles listed on the MyBook history page  
-[✕] One of the vehicles listed on the wishlist page  
+[✓] One of the vehicles listed on the MyBook history page  
+[✓] One of the vehicles listed on the wishlist page  
 
 #### 2. The share button and like button should be able to use. No need to get/update data from API
 [✓] Share link should be able to use and not get/update data from API
@@ -87,11 +96,22 @@ UI Component: [Material UI](https://mui.com/material-ui/)
 [✓] Copy URL to Clipboard
 
 #### 4. The button “Like” will add the vehicle to the list of wishlist vehicles. Allowed to store in state management
-[✕]
+[✓] Store wishlist data to redux
 
 #### 5. The button “Book” will add the vehicle to the list of purchased history. Allowed to store in state management
-[✕]
+[✓] Store book data to redux
 
-## Preview App
+### My Book Page
 
-## Preview Test
+#### 1. This page will display if the user clicks on the MyBook menu at the above navigation on the Home page
+[✓] User click navigation can show this page
+
+#### 2. The list of booked vehicles will grow if the use clicks “Book” on the vehicle detail page
+[✓] Data will increase
+
+#### 3. If the user clicks on one of the vehicles on the list it will bring to the detail vehicle page
+[✓] Navigate to detail car
+
+#### 4. The back button will bring you back to the previous page
+[✓] Button back to home
+

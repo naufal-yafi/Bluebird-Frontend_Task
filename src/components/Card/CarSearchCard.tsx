@@ -23,7 +23,7 @@ const CarSearchCard = (props: {
       }}
     >
       <Card sx={{ width: "50%" }}>
-        <Link href={`/vehicle?title=${props.title}`}>
+        <Link href={`/?title=${props.title}`}>
           <CardMedia component="img" image={props.image} alt="Paella dish" />
         </Link>
       </Card>

@@ -1,8 +1,9 @@
-import { Container, Typography } from "@mui/material";
-import { Fragment, useEffect } from "react";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { Button, Container, Paper, Typography } from "@mui/material";
+import { Fragment, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
-import BookWishlistCard from "../components/Card/BookWishlistCard";
+import BookCard from "../components/Card/BookCard";
 import CarDetailCard from "../components/Card/CarDetailCard";
 import Header from "../components/Header";
 import CarList from "../components/List/CarList";
@@ -16,6 +17,7 @@ import CarType from "../types/carType.type";
 const HomePage = () => {
   const { loading, cars, errorMessage } = useFetchApi();
   const [requestQuery] = useSearchParams();
+  const [countPrice, setCountPrice] = useState<number>(0);
 
   const WISHLIST = useSelector(
     (state: WishlistRootState) => state.wishlist.data,
@@ -28,7 +30,13 @@ const HomePage = () => {
   useEffect(() => {
     localStorage.setItem("wishlist", JSON.stringify(WISHLIST));
     localStorage.setItem("book", JSON.stringify(BOOK));
-  });
+
+    let count = 0;
+    BOOK.forEach(
+      (car: CarType) => (count += utils.convertIDRStringToNumber(car.price)),
+    );
+    setCountPrice(count);
+  }, [BOOK, WISHLIST]);
 
   return (
     <Fragment>
@@ -54,8 +62,17 @@ const HomePage = () => {
 
                 {TAB === "wishlist" && (
                   <>
+                    <Typography
+                      variant="h4"
+                      component="h1"
+                      fontWeight={800}
+                      sx={{ mb: 2 }}
+                    >
+                      Wishlist
+                    </Typography>
+
                     {WISHLIST.map((car: CarType) => (
-                      <BookWishlistCard
+                      <BookCard
                         key={car.vehicle}
                         title={car.vehicle}
                         price={car.price}
@@ -67,14 +84,37 @@ const HomePage = () => {
 
                 {TAB === "book" && (
                   <>
+                    <Typography
+                      variant="h4"
+                      component="h1"
+                      fontWeight={800}
+                      sx={{ mb: 2 }}
+                    >
+                      Book
+                    </Typography>
+                    <Button href="/" startIcon={<ArrowBackIcon />}>
+                      Back
+                    </Button>
                     {BOOK.map((car: CarType) => (
-                      <BookWishlistCard
+                      <BookCard
                         key={car.vehicle}
                         title={car.vehicle}
                         price={car.price}
                         image={car.imageURL}
                       />
                     ))}
+                    <Paper sx={{ mt: 2, px: 2, py: 2, textAlign: "end" }}>
+                      <Typography
+                        variant="caption"
+                        component="h2"
+                        color="text.secondary"
+                      >
+                        Total Price:
+                      </Typography>
+                      <Typography variant="h5" component="p">
+                        {utils.formatToIDR(countPrice)}
+                      </Typography>
+                    </Paper>
                   </>
                 )}
 

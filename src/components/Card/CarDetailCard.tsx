@@ -52,7 +52,7 @@ const CarDetailCard = (props: { car: CarType; path: string | null }) => {
         }}
       >
         <Card sx={{ width: "50%" }}>
-          <Link href={`/vehicle?title=${props.car?.vehicle}`}>
+          <Link href={`/?title=${props.car?.vehicle}`}>
             <CardMedia
               component="img"
               image={props.car?.imageURL}

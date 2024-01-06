@@ -27,6 +27,17 @@ const utils = {
   findCarByTitle: (obj: CarType[], targetTitle: string): CarType[] => {
     return obj.filter((car: CarType) => car.vehicle === targetTitle);
   },
+  convertIDRStringToNumber: (idrString: string): number => {
+    const cleanString = idrString.replace(/\D/g, "");
+
+    return parseInt(cleanString, 10);
+  },
+  formatToIDR: (number: number): string => {
+    return new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+    }).format(number);
+  },
 };
 
 export default utils;
