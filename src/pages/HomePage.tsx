@@ -35,6 +35,7 @@ const HomePage = () => {
   const { inputValue, handleInput } = useInput();
   const [requestQuery] = useSearchParams();
   const [countPrice, setCountPrice] = useState<number>(0);
+  const [countPriceWishlist, setCountPriceWishlist] = useState<number>(0);
   const [searchCar, setSearchCar] = useState<CarType[]>();
 
   const WISHLIST = useSelector(
@@ -60,6 +61,12 @@ const HomePage = () => {
       (car: CarType) => (count += utils.convertIDRStringToNumber(car.price)),
     );
     setCountPrice(count);
+
+    count = 0;
+    WISHLIST.forEach(
+      (car: CarType) => (count += utils.convertIDRStringToNumber(car.price)),
+    );
+    setCountPriceWishlist(count);
   }, [BOOK, WISHLIST]);
 
   return (
@@ -124,6 +131,12 @@ const HomePage = () => {
                               <TableCell>{car.price}</TableCell>
                             </TableRow>
                           ))}
+                          <TableRow>
+                            <TableCell>Total</TableCell>
+                            <TableCell>
+                              {utils.formatToIDR(countPriceWishlist)}
+                            </TableCell>
+                          </TableRow>
                         </TableBody>
                       </Table>
                     </TableContainer>

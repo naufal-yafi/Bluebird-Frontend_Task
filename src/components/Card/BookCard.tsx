@@ -5,25 +5,28 @@ import {
   CardMedia,
   Link,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 
 const BookCard = (props: { title: string; image: string; price: string }) => {
+  const desktopView = useMediaQuery("(min-width:1024px)");
+
   return (
     <Box
       sx={{
         display: "flex",
-        flexDirection: "row",
+        flexDirection: `${desktopView ? "row" : "column"}`,
         justifyContent: "center",
         mt: 5,
         gap: 2,
       }}
     >
-      <Card sx={{ width: "50%" }}>
+      <Card sx={{ width: `${desktopView ? "50%" : "100%"}` }}>
         <Link href={`/?title=${props.title}`}>
           <CardMedia component="img" image={props.image} alt="Paella dish" />
         </Link>
       </Card>
-      <Card sx={{ width: "50%" }}>
+      <Card sx={{ width: `${desktopView ? "50%" : "100%"}` }}>
         <CardContent>
           <Link href={`/?title=${props.title}`}>
             <Typography

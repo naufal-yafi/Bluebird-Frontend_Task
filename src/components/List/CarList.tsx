@@ -1,4 +1,4 @@
-import { ImageList } from "@mui/material";
+import { ImageList, useMediaQuery } from "@mui/material";
 import utils from "../../lib/utils";
 import CarType from "../../types/carType.type";
 import Type from "../../types/type.type";
@@ -6,9 +6,10 @@ import CarCard from "../Card/CarCard";
 
 const CarList = (props: { cars: Type[]; match: CarType[] }) => {
   const RANDOM_INDEX: number = utils.randomIndex();
+  const desktopView = useMediaQuery("(min-width:1024px)");
 
   return (
-    <ImageList cols={4} sx={{ mt: 8 }}>
+    <ImageList cols={desktopView ? 4 : 1} sx={{ mt: 8 }}>
       {[0, 1, 2, 3].map((index: number) => (
         <CarCard
           key={index}

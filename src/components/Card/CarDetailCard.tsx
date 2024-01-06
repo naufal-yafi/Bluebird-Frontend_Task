@@ -11,6 +11,7 @@ import {
   Link,
   Snackbar,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import { Fragment } from "react";
 import { useDispatch } from "react-redux";
@@ -35,6 +36,7 @@ const CarDetailCard = (props: {
     useColorActive(props.isMathWishList);
   const { colorActive: activeShare, handleColor: handleActiveShare } =
     useColorActive(false);
+  const desktopView = useMediaQuery("(min-width:1024px)");
 
   return (
     <Fragment>
@@ -57,13 +59,14 @@ const CarDetailCard = (props: {
       <Box
         sx={{
           display: "flex",
-          flexDirection: "row",
+          flexDirection: `${desktopView ? "row" : "column"}`,
           justifyContent: "center",
+          alignItems: "center",
           mt: 5,
           gap: 2,
         }}
       >
-        <Card sx={{ width: "50%" }}>
+        <Card sx={{ width: `${desktopView ? "50%" : "100%"}` }}>
           <Link href={`/?title=${props.car?.vehicle}`}>
             <CardMedia
               component="img"
@@ -72,7 +75,7 @@ const CarDetailCard = (props: {
             />
           </Link>
         </Card>
-        <Card sx={{ width: "50%" }}>
+        <Card sx={{ width: `${desktopView ? "50%" : "100%"}` }}>
           <CardContent>
             <Typography
               variant="h4"
