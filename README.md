@@ -81,16 +81,16 @@ UI Component: [Material UI](https://mui.com/material-ui/)
 [✕] One of the vehicles listed on the wishlist page  
 
 #### 2. The share button and like button should be able to use. No need to get/update data from API
-[✕] Share link should be able to use and not get/update data from API
+[✓] Share link should be able to use and not get/update data from API
 
 #### 3. The button “share” will copy the URL to the clipboard and the user can paste it later
-[✕] Copy URL to Clipboard
+[✓] Copy URL to Clipboard
 
 #### 4. The button “Like” will add the vehicle to the list of wishlist vehicles. Allowed to store in state management
+[✕]
 
 #### 5. The button “Book” will add the vehicle to the list of purchased history. Allowed to store in state management
-
-
+[✕]
 
 ## Preview App
 

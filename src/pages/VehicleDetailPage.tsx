@@ -17,6 +17,8 @@ const VehicleDetailPage = () => {
     type: [],
   });
 
+  const fullURL = window.location.origin + location.pathname + location.search;
+
   const TITLE: string | null = requestQuery.get("title");
 
   useEffect(() => {
@@ -41,6 +43,7 @@ const VehicleDetailPage = () => {
                 car={
                   utils.findCarByTitle(utils.flattenCarTypes(cars), TITLE)[0]
                 }
+                path={fullURL}
               />
             )}
           </>
