@@ -1,5 +1,17 @@
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { Button, Container, Paper, Typography } from "@mui/material";
+import {
+  Button,
+  Container,
+  Link,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+} from "@mui/material";
 import { Fragment, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
@@ -71,14 +83,25 @@ const HomePage = () => {
                       Wishlist
                     </Typography>
 
-                    {WISHLIST.map((car: CarType) => (
-                      <BookCard
-                        key={car.vehicle}
-                        title={car.vehicle}
-                        price={car.price}
-                        image={car.imageURL}
-                      />
-                    ))}
+                    <TableContainer>
+                      <Table>
+                        <TableHead>
+                          <TableRow>
+                            <TableCell>Name</TableCell>
+                            <TableCell>Price</TableCell>
+                          </TableRow>
+                        </TableHead>
+
+                        <TableBody>
+                          {WISHLIST.map((car: CarType) => (
+                            <TableRow key={car.vehicle}>
+                              <TableCell><Link href={`/?title=${car.vehicle}`}>{car.vehicle}</Link></TableCell>
+                              <TableCell>{car.price}</TableCell>
+                            </TableRow>
+                          ))}
+                        </TableBody>
+                      </Table>
+                    </TableContainer>
                   </>
                 )}
 
