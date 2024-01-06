@@ -39,11 +39,11 @@ UI Component: [Material UI](https://mui.com/material-ui/)
 
 ## Requirements
 
-[✕]  Redux  
+[✓]  Redux  
 [✓]  React Hook (useState, useEffect, useRef)  
 [✕]  Unit Test Jest + Enzyme (coverage 50%)  
-[✕]  Hybrid App SSR and CSR _(optional)_  
-[✕]  AMP Pages _(optional)_  
+[✕]  Hybrid App SSR and CSR _(big plus)_  
+[✕]  AMP Pages _(big plus)_  
 
 ## Task
 

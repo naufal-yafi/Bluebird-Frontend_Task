@@ -13,12 +13,15 @@ import {
   Typography,
 } from "@mui/material";
 import { Fragment } from "react";
+import { useDispatch } from "react-redux";
 import useCopyToClipboard from "../../hooks/useCopyToClipboard";
+import { addToWishlist } from "../../redux/slices/wishlistSlice";
 import CarType from "../../types/carType.type";
 
 const CarDetailCard = (props: { car: CarType; path: string | null }) => {
   const { showPopup, handleCopyToClipboard, error, handleShowPopup } =
     useCopyToClipboard();
+  const dispatch = useDispatch();
 
   return (
     <Fragment>
@@ -105,7 +108,19 @@ const CarDetailCard = (props: { car: CarType; path: string | null }) => {
                 <ShareIcon />
               </IconButton>
 
-              <IconButton sx={{ color: "rgba(255, 255, 255, 0.54)" }}>
+              <IconButton
+                sx={{ color: "rgba(255, 255, 255, 0.54)" }}
+                onClick={() =>
+                  dispatch(
+                    addToWishlist({
+                      vehicle: props.car?.vehicle,
+                      imageURL: props.car?.imageURL,
+                      description: props.car?.description,
+                      price: props.car?.price,
+                    }),
+                  )
+                }
+              >
                 <FavoriteIcon />
               </IconButton>
 

@@ -13,6 +13,8 @@ const CarList = (props: { cars: Type[] }) => {
           key={index}
           title={props.cars[index]?.car_type[RANDOM_INDEX]?.vehicle}
           image={props.cars[index]?.car_type[RANDOM_INDEX]?.imageURL}
+          desc={props.cars[index]?.car_type[RANDOM_INDEX]?.description}
+          price={props.cars[index]?.car_type[RANDOM_INDEX]?.price}
         />
       ))}
     </ImageList>

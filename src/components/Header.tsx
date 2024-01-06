@@ -10,11 +10,14 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Toolbar from "@mui/material/Toolbar";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import useHeader from "../hooks/useHeader";
 import SearchBar from "./SearchBar";
 
 const Header = (props: { default_value: string | null }) => {
+  const WISHLIST = useSelector((state) => state.wishlist.data);
+
   const {
     anchorEl,
     mobileMoreAnchorEl,
@@ -28,11 +31,13 @@ const Header = (props: { default_value: string | null }) => {
   const SETTINGS_MENU = {
     wishlist: {
       label: "My Wishlist",
-      count: 0,
+      count: WISHLIST.length,
+      link: "/wishlist",
     },
     book: {
       label: "My Book",
       count: 0,
+      link: "/book",
     },
   };
 
@@ -76,7 +81,12 @@ const Header = (props: { default_value: string | null }) => {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+        <IconButton
+          size="large"
+          aria-label="show 4 new mails"
+          color="inherit"
+          href={SETTINGS_MENU.wishlist.link}
+        >
           <Badge badgeContent={SETTINGS_MENU.wishlist.count} color="error">
             <FavoriteIcon />
           </Badge>
@@ -84,7 +94,12 @@ const Header = (props: { default_value: string | null }) => {
         <p>{SETTINGS_MENU.wishlist.label}</p>
       </MenuItem>
       <MenuItem>
-        <IconButton size="large" aria-label="show 17 new books" color="inherit">
+        <IconButton
+          size="large"
+          aria-label="show 17 new books"
+          color="inherit"
+          href={SETTINGS_MENU.book.link}
+        >
           <Badge badgeContent={SETTINGS_MENU.book.count} color="error">
             <BookIcon />
           </Badge>
@@ -117,6 +132,7 @@ const Header = (props: { default_value: string | null }) => {
               size="large"
               aria-label="show 4 new mails"
               color="inherit"
+              href={SETTINGS_MENU.wishlist.link}
             >
               <Badge badgeContent={SETTINGS_MENU.wishlist.count} color="error">
                 <FavoriteIcon />
@@ -129,6 +145,7 @@ const Header = (props: { default_value: string | null }) => {
               size="large"
               aria-label="show 17 new notifications"
               color="inherit"
+              href={SETTINGS_MENU.book.link}
             >
               <Badge badgeContent={SETTINGS_MENU.book.count} color="error">
                 <BookIcon />
