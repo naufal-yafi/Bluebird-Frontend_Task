@@ -8,7 +8,11 @@ const CarCard = (props: { image: string; title: string }) => {
   return (
     <ImageListItem key={props.image}>
       <Link href={`/vehicle?title=${props.title}`}>
-        <img src={props.image} alt={props.image} />
+        <button
+          style={{ cursor: "pointer", background: "none", border: "none" }}
+        >
+          <img src={props.image} alt={props.image} />
+        </button>
       </Link>
       <ImageListItemBar
         title={props.title}

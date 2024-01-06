@@ -10,13 +10,9 @@ import {
   Link,
   Typography,
 } from "@mui/material";
+import CarType from "../types/carType.type";
 
-const CarDetailCard = (props: {
-  title: string;
-  image: string;
-  price: string;
-  description: string[];
-}) => {
+const CarDetailCard = (props: { car: CarType }) => {
   return (
     <Box
       sx={{
@@ -28,8 +24,12 @@ const CarDetailCard = (props: {
       }}
     >
       <Card sx={{ width: "50%" }}>
-        <Link href={`/vehicle?title=${props.title}`}>
-          <CardMedia component="img" image={props.image} alt="Paella dish" />
+        <Link href={`/vehicle?title=${props.car?.vehicle}`}>
+          <CardMedia
+            component="img"
+            image={props.car?.imageURL}
+            alt="Paella dish"
+          />
         </Link>
       </Card>
       <Card sx={{ width: "50%" }}>
@@ -41,7 +41,7 @@ const CarDetailCard = (props: {
             fontWeight={800}
             sx={{ mb: 2 }}
           >
-            {props.title}
+            {props.car?.vehicle}
           </Typography>
 
           <Typography
@@ -53,7 +53,7 @@ const CarDetailCard = (props: {
             Price:
           </Typography>
           <Typography variant="body1" component="p" sx={{ mb: 2 }}>
-            {props.price}
+            {props.car?.price}
           </Typography>
 
           <Typography
@@ -65,7 +65,7 @@ const CarDetailCard = (props: {
             Specifications:
           </Typography>
           <Typography variant="body1">
-            {props.description.map((desc: string) => (
+            {props.car?.description.map((desc: string) => (
               <>
                 {desc} <br />
               </>

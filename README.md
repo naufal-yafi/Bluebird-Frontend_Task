@@ -77,11 +77,11 @@ UI Component: [Material UI](https://mui.com/material-ui/)
 #### 1. This page will display if the user clicks on
 [✓] One of the vehicles listed on the home page  
 [✓] One of the vehicles on the search result page  
-[✓] One of the vehicles listed on the MyBook history page  
-[✓] One of the vehicles listed on the wishlist page  
+[✕] One of the vehicles listed on the MyBook history page  
+[✕] One of the vehicles listed on the wishlist page  
 
 #### 2. The share button and like button should be able to use. No need to get/update data from API
-[✓] Share link should be able to use and not get/update data from API
+[✕] Share link should be able to use and not get/update data from API
 
 #### 3. The button “share” will copy the URL to the clipboard and the user can paste it later
 [✕] Copy URL to Clipboard
