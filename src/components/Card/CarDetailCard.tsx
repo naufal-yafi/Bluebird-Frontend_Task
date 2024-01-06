@@ -15,6 +15,7 @@ import {
 import { Fragment } from "react";
 import { useDispatch } from "react-redux";
 import useCopyToClipboard from "../../hooks/useCopyToClipboard";
+import { addToBook } from "../../redux/slices/bookSlice";
 import { addToWishlist } from "../../redux/slices/wishlistSlice";
 import CarType from "../../types/carType.type";
 
@@ -124,7 +125,19 @@ const CarDetailCard = (props: { car: CarType; path: string | null }) => {
                 <FavoriteIcon />
               </IconButton>
 
-              <IconButton sx={{ color: "rgba(255, 255, 255, 0.54)" }}>
+              <IconButton
+                sx={{ color: "rgba(255, 255, 255, 0.54)" }}
+                onClick={() =>
+                  dispatch(
+                    addToBook({
+                      vehicle: props.car?.vehicle,
+                      imageURL: props.car?.imageURL,
+                      description: props.car?.description,
+                      price: props.car?.price,
+                    }),
+                  )
+                }
+              >
                 <BookIcon />
               </IconButton>
             </Box>

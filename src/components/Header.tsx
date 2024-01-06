@@ -17,6 +17,7 @@ import SearchBar from "./SearchBar";
 const Header = (props: {
   default_value: string | null;
   wishlist_count: number;
+  book_count: number;
 }) => {
   const {
     anchorEl,
@@ -36,7 +37,7 @@ const Header = (props: {
     },
     book: {
       label: "My Book",
-      count: 0,
+      count: props.book_count,
       link: "/?tab=book",
     },
   };

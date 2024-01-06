@@ -16,7 +16,7 @@ const CarCard = (props: {
 
   return (
     <ImageListItem key={props.image}>
-      <Link href={`/vehicle?title=${props.title}`}>
+      <Link href={`/?title=${props.title}`}>
         <button
           style={{ cursor: "pointer", background: "none", border: "none" }}
         >

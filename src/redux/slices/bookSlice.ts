@@ -5,8 +5,13 @@ interface BookState {
   data: CarType[];
 }
 
+const localStorageData = localStorage.getItem("book");
+const initialData: CarType[] = localStorageData
+  ? JSON.parse(localStorageData)
+  : [];
+
 const initialState: BookState = {
-  data: [],
+  data: initialData,
 };
 
 const bookSlice = createSlice({
@@ -14,7 +19,14 @@ const bookSlice = createSlice({
   initialState,
   reducers: {
     addToBook: (state, action: PayloadAction<CarType>) => {
-      state.data.push(action.payload);
+      const { data } = state;
+      const isDuplicate = data.find(
+        (item: CarType) => item.vehicle === action.payload.vehicle,
+      );
+
+      if (!isDuplicate) {
+        state.data.push(action.payload);
+      }
     },
   },
 });
