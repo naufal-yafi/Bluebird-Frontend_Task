@@ -1,10 +1,8 @@
-import { Container } from "@mui/material";
-import ImageList from "@mui/material/ImageList";
+import { Container, Typography } from "@mui/material";
 import { Fragment, useEffect, useState } from "react";
-import Card from "../components/Card";
+import CarList from "../components/CarList";
 import CategoryList from "../components/CategoryList";
 import Header from "../components/Header";
-import utils from "../lib/utils";
 import CarService from "../services/car.service";
 import ResponseObject from "../types/responseObject.type";
 
@@ -14,7 +12,6 @@ const HomePage = () => {
     category: [],
     type: [],
   });
-  const RANDOM_INDEX: number = utils.randomIndex();
 
   useEffect(() => {
     CarService.getAll((data: ResponseObject) => setCars(data));
@@ -24,22 +21,13 @@ const HomePage = () => {
   return (
     <Fragment>
       <Header />
-      <Container>
+      <Container sx={{ pt: 12 }}>
         {loading ? (
-          "Loading..."
+          <Typography align="center">Loading...</Typography>
         ) : (
           <>
             <CategoryList categories={cars?.category} />
-
-            <ImageList cols={4}>
-              {[0, 1, 2, 3].map((index: number) => (
-                <Card
-                  key={index}
-                  title={cars?.type[index]?.car_type[RANDOM_INDEX]?.vehicle}
-                  image={cars?.type[index]?.car_type[RANDOM_INDEX]?.imageURL}
-                />
-              ))}
-            </ImageList>
+            <CarList cars={cars?.type} />
           </>
         )}
       </Container>

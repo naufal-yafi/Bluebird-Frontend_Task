@@ -53,7 +53,7 @@ UI Component: [Material UI](https://mui.com/material-ui/)
 [✓] Should display like status (love icon)
    
 #### 4. The menu bar should always hang on top of the page
-[✕] App bar position fixed
+[✓] App bar position fixed
 
 ## Preview App
 

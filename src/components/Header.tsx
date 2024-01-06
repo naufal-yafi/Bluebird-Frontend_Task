@@ -1,7 +1,7 @@
 import BookIcon from "@mui/icons-material/Book";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import HomeIcon from "@mui/icons-material/Home";
 import MoreIcon from "@mui/icons-material/MoreVert";
-import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
 import { Typography } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Badge from "@mui/material/Badge";
@@ -19,11 +19,14 @@ const Header = () => {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
     useState<null | HTMLElement>(null);
 
-  const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  const isMenuOpen: boolean = Boolean(anchorEl);
+  const isMobileMenuOpen: boolean = Boolean(mobileMoreAnchorEl);
 
-  const COUNT_WISHLIST = 0;
-  const COUNT_MYBOOK = 0;
+  const COUNT_WISHLIST: number = 0;
+  const COUNT_BOOK: number = 0;
+
+  const LABEL_WISHLIST: string = "My Wishlist";
+  const LABEL_BOOK: string = "My Book";
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
@@ -80,25 +83,25 @@ const Header = () => {
       <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           <Badge badgeContent={COUNT_WISHLIST} color="error">
-            <ReceiptLongIcon />
+            <FavoriteIcon />
           </Badge>
         </IconButton>
-        <p>Wishlist</p>
+        <p>{LABEL_WISHLIST}</p>
       </MenuItem>
       <MenuItem>
         <IconButton size="large" aria-label="show 17 new books" color="inherit">
-          <Badge badgeContent={COUNT_MYBOOK} color="error">
+          <Badge badgeContent={COUNT_BOOK} color="error">
             <BookIcon />
           </Badge>
         </IconButton>
-        <p>My Book</p>
+        <p>{LABEL_BOOK}</p>
       </MenuItem>
     </Menu>
   );
 
   return (
     <Box>
-      <AppBar position="static">
+      <AppBar component="nav">
         <Toolbar>
           <Link to="/">
             <IconButton
@@ -121,19 +124,19 @@ const Header = () => {
               color="inherit"
             >
               <Badge badgeContent={COUNT_WISHLIST} color="error">
-                <ReceiptLongIcon />
+                <FavoriteIcon />
               </Badge>
-              <Typography sx={{ ml: 1 }}>Wishlist</Typography>
+              <Typography sx={{ ml: 1 }}>{LABEL_WISHLIST}</Typography>
             </IconButton>
             <IconButton
               size="large"
               aria-label="show 17 new notifications"
               color="inherit"
             >
-              <Badge badgeContent={COUNT_MYBOOK} color="error">
+              <Badge badgeContent={COUNT_BOOK} color="error">
                 <BookIcon />
               </Badge>
-              <Typography sx={{ ml: 1 }}>My Book</Typography>
+              <Typography sx={{ ml: 1 }}>{LABEL_BOOK}</Typography>
             </IconButton>
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" } }}>

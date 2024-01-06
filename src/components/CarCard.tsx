@@ -3,7 +3,7 @@ import IconButton from "@mui/material/IconButton";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
 
-const Card = (props: { image: string; title: string }) => {
+const CarCard = (props: { image: string; title: string }) => {
   return (
     <ImageListItem key={props.image}>
       <img src={props.image} alt={props.image} />
@@ -22,4 +22,4 @@ const Card = (props: { image: string; title: string }) => {
   );
 };
 
-export default Card;
+export default CarCard;
