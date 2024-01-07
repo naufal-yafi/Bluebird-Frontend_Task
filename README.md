@@ -9,7 +9,6 @@ I use React from Vite Typescript with UI Component from Material UI (MUI).
   - [Technology Used](#technology-used)
   - [Requirements](#requirements)
   - [Preview App](#preview-app)
-  - [Preview Test](#preview-test)
   - [Task](#task)
     - [1. Home Page](#1-home-page)
       - [1.1 Category list](#11-category-list)
@@ -34,8 +33,6 @@ UI Component: [Material UI](https://mui.com/material-ui/)
 [✕]  AMP Pages _(big plus)_  
 
 ## Preview App
-
-## Preview Test
 
 ## Task
 

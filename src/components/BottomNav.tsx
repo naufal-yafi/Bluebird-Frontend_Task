@@ -4,10 +4,12 @@ import { Paper, useMediaQuery } from "@mui/material";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import { useState } from "react";
+import useHistory from "../hooks/useHistory";
 
 const BottomNav = () => {
   const [value, setValue] = useState(0);
   const desktopView = useMediaQuery("(min-width:1024px)");
+  const { handleSaveHistory } = useHistory();
 
   return (
     <Paper
@@ -35,6 +37,7 @@ const BottomNav = () => {
         <BottomNavigationAction
           label="Book"
           icon={<BookIcon color="info" />}
+          onClick={() => handleSaveHistory(location.href)}
           href="/?tab=book"
         />
       </BottomNavigation>

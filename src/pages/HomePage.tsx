@@ -24,6 +24,7 @@ import CarList from "../components/List/CarList";
 import CategoryList from "../components/List/CategoryList";
 import StyledInputBase from "../components/styledInputBase.style";
 import useFetchApi from "../hooks/useFetchApi";
+import useHistory from "../hooks/useHistory";
 import useInput from "../hooks/useInput";
 import utils from "../lib/utils";
 import { BookRootState } from "../redux/root/bookRoot";
@@ -33,6 +34,7 @@ import CarType from "../types/carType.type";
 const HomePage = () => {
   const { loading, cars, errorMessage } = useFetchApi();
   const { inputValue, handleInput } = useInput();
+  const { history, handleDeleteHistory } = useHistory();
   const [requestQuery] = useSearchParams();
   const [countPrice, setCountPrice] = useState<number>(0);
   const [countPriceWishlist, setCountPriceWishlist] = useState<number>(0);
@@ -153,7 +155,11 @@ const HomePage = () => {
                     >
                       Book
                     </Typography>
-                    <Button href="/" startIcon={<ArrowBackIcon />}>
+                    <Button
+                      onClick={handleDeleteHistory}
+                      href={history?.toString()}
+                      startIcon={<ArrowBackIcon />}
+                    >
                       Back
                     </Button>
                     {BOOK.map((car: CarType) => (

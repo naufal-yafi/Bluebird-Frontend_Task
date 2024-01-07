@@ -13,6 +13,7 @@ import Toolbar from "@mui/material/Toolbar";
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import useHeader from "../hooks/useHeader";
+import useHistory from "../hooks/useHistory";
 import SearchBar from "./SearchBar";
 
 const Header = (props: {
@@ -29,6 +30,7 @@ const Header = (props: {
     handleMobileMenuClose,
     handleMobileMenuOpen,
   } = useHeader();
+  const { handleSaveHistory } = useHistory();
 
   const SETTINGS_MENU = {
     wishlist: {
@@ -101,6 +103,7 @@ const Header = (props: {
           aria-label="show 17 new books"
           color="inherit"
           href={SETTINGS_MENU.book.link}
+          onClick={() => handleSaveHistory(location.href)}
         >
           <Badge badgeContent={SETTINGS_MENU.book.count} color="error">
             <BookIcon />
@@ -148,6 +151,7 @@ const Header = (props: {
               aria-label="show 17 new notifications"
               color="inherit"
               href={SETTINGS_MENU.book.link}
+              onClick={() => handleSaveHistory(location.href)}
             >
               <Badge badgeContent={SETTINGS_MENU.book.count} color="error">
                 <BookIcon />
