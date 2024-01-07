@@ -27,7 +27,7 @@ UI Component: [Material UI](https://mui.com/material-ui/)
 
 [✓]  Redux  
 [✓]  React Hook (useState, useEffect, useRef)  
-[✕]  Unit Test Jest + Enzyme (coverage 50%)  
+[✕]  Unit Test (coverage 50%)  
 [✕]  Hybrid App SSR and CSR _(big plus)_  
 [✕]  AMP Pages _(big plus)_  
 
@@ -57,7 +57,7 @@ UI Component: [Material UI](https://mui.com/material-ui/)
 ### 2. Search Page
 
 [✓]  In the beginning, the page displays a search text box  
-[✕]  When the user types vehicle in the search text box, vehicles detail displayed
+[✓]  When the user types vehicle in the search text box, vehicles detail displayed
 
 ### 3. Vehicle Detail Page
 
