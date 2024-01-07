@@ -1,6 +1,7 @@
 # Frontend React Task
 
-I use React from Vite Typescript with UI Component from Material UI (MUI).
+I use React from Vite Typescript with UI Component from Material UI (MUI).  
+[🎥 Video Preview App](https://youtu.be/IyI6kwAb6nc)
 
 # Table of Content
 
@@ -24,6 +25,8 @@ I use React from Vite Typescript with UI Component from Material UI (MUI).
 Technology: [React + Vite + Typescript](https://vitejs.dev/guide/)  
 UI Component: [Material UI](https://mui.com/material-ui/)
 
+[[Table of Content](#table-of-content)]
+
 ## Requirements
 
 [✓]  Redux  
@@ -32,7 +35,13 @@ UI Component: [Material UI](https://mui.com/material-ui/)
 [✕]  Hybrid App SSR and CSR _(big plus)_  
 [✕]  AMP Pages _(big plus)_  
 
+[[Table of Content](#table-of-content)]
+
 ## Preview App
+
+[🎥 Video Preview App](https://youtu.be/IyI6kwAb6nc)
+
+[[Table of Content](#table-of-content)]
 
 ## Task
 
@@ -51,12 +60,15 @@ UI Component: [Material UI](https://mui.com/material-ui/)
 
 [✓] Should display unique random vehicle vehicles and image  
 [✓] Should display like status (love icon)
-   
+
+[[Table of Content](#table-of-content)]
 
 ### 2. Search Page
 
 [✓]  In the beginning, the page displays a search text box  
 [✓]  When the user types vehicle in the search text box, vehicles detail displayed
+
+[[Table of Content](#table-of-content)]
 
 ### 3. Vehicle Detail Page
 
@@ -72,12 +84,16 @@ UI Component: [Material UI](https://mui.com/material-ui/)
 [✓] One of the vehicles listed on the MyBook history page  
 [✓] One of the vehicles listed on the wishlist page  
 
+[[Table of Content](#table-of-content)]
+
 ### My Book Page
 
 [✓] This page will display if the user clicks on the MyBook menu at the above navigation on the Home page  
 [✓] The list of booked vehicles will grow if the use clicks “Book” on the vehicle detail page  
 [✓] If the user clicks on one of the vehicles on the list it will bring to the detail vehicle page    
 [✓] The back button will bring you back to the previous page  
+
+[[Table of Content](#table-of-content)]
 
 ### Wishlist Page
 
@@ -88,3 +104,4 @@ page
 [✓] If the user clicks on one of the vehicles on the list it will bring to the detail vehicle page  
 [✓] The design is similar to the Purchase History page with the title “Wishlist
 
+[[Table of Content](#table-of-content)]
